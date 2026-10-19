@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ประกาศของคุณ | FoundIt</title>
+  <meta name="description" content="จัดการประกาศของหายและสิ่งของที่พบของคุณ">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <script defer src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+</head>
+<body data-layout="app" data-page="my-reports" data-title="ประกาศของคุณ">
+  <div class="app-shell">
+    <div id="appSidebar"></div>
+    <div class="app-main">
+      <div id="appTopbar"></div>
+      <main id="main" class="app-content">
+        <div class="page-head">
+          <div>
+            <h1>ประกาศของคุณ</h1>
+            <p>ดู แก้ไข เปลี่ยนสถานะ หรือลบประกาศที่คุณลงไว้</p>
+          </div>
+          <div class="quick-actions">
+            <a class="btn btn-primary" href="report-lost.html"><i data-lucide="plus"></i>แจ้งของหาย</a>
+            <a class="btn btn-outline" href="report-found.html"><i data-lucide="plus"></i>แจ้งพบสิ่งของ</a>
+          </div>
+        </div>
+
+        <section class="stat-cards" aria-label="สรุปประกาศของฉัน">
+          <div class="stat-card"><span class="stat-icon tone-primary"><i data-lucide="layers"></i></span><div><div class="stat-num" id="mTotal">0</div><div class="stat-label">ประกาศทั้งหมด</div></div></div>
+          <div class="stat-card"><span class="stat-icon tone-warning"><i data-lucide="search"></i></span><div><div class="stat-num" id="mSearching">0</div><div class="stat-label">กำลังตามหา</div></div></div>
+          <div class="stat-card"><span class="stat-icon tone-primary"><i data-lucide="package-check"></i></span><div><div class="stat-num" id="mFound">0</div><div class="stat-label">พบสิ่งของที่ตรงกัน</div></div></div>
+          <div class="stat-card"><span class="stat-icon tone-success"><i data-lucide="badge-check"></i></span><div><div class="stat-num" id="mReturned">0</div><div class="stat-label">ส่งคืนแล้ว</div></div></div>
+        </section>
+
+        <section class="card" aria-label="รายการประกาศของฉัน">
+          <div class="toolbar">
+            <div class="input-icon">
+              <i data-lucide="search"></i>
+              <input class="input" id="mySearch" type="search" placeholder="ค้นหาชื่อ รหัส หรือสถานที่" aria-label="ค้นหาประกาศของฉัน" autocomplete="off">
+            </div>
+            <select class="select" id="myScope" aria-label="ขอบเขตประกาศ" style="display:none">
+              <option value="all">ประกาศทั้งหมดในระบบ (Admin)</option>
+              <option value="mine">เฉพาะประกาศของฉัน</option>
+            </select>
+            <select class="select" id="myStatus" aria-label="กรองตามสถานะ">
+              <option value="all">ทุกสถานะ</option>
+              <option value="searching">กำลังตามหา</option>
+              <option value="found">มีผู้พบสิ่งของ</option>
+              <option value="returned">ส่งคืนแล้ว</option>
+            </select>
+            <select class="select" id="myType" aria-label="กรองตามประเภท">
+              <option value="all">ทุกประเภท</option>
+              <option value="lost">ของหาย</option>
+              <option value="found">ของที่พบ</option>
+            </select>
+            <span class="text-muted" id="myCount" aria-live="polite" style="margin-left:auto"></span>
+          </div>
+          <div class="table-wrap" id="myTableWrap">
+            <table class="table">
+              <thead><tr><th scope="col">ประกาศ</th><th scope="col">ประเภท</th><th scope="col">สถานที่</th><th scope="col">วันที่</th><th scope="col">สถานะ</th><th scope="col" style="text-align:right">จัดการ</th></tr></thead>
+              <tbody id="myBody"></tbody>
+            </table>
+          </div>
+          <div id="myEmpty" hidden></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script defer src="assets/js/mock-data.js?v=20261019_detail"></script>
+  <script defer src="assets/js/app.js?v=20261019_detail"></script>
+  <script defer src="assets/js/dashboard.js?v=20261019_detail"></script>
+</body>
+</html>

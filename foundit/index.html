@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FoundIt — Lost &amp; Found Platform | ศูนย์กลางแจ้งของหายในมหาวิทยาลัย</title>
+  <meta name="description" content="FoundIt ศูนย์กลางแจ้งของหายและค้นหาสิ่งของที่พบ เพื่อให้ทุกสิ่งกลับคืนสู่เจ้าของ">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <script defer src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+</head>
+<body data-layout="public" data-page="index">
+  <div id="siteHeader"></div>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="hero-badge"><i data-lucide="shield-check"></i> ระบบแจ้งของหาย</span>
+          <h1 id="heroTitle">ตามหาสิ่งของที่หายไป <span class="hl">ให้เราช่วยคุณ</span></h1>
+          <p class="lead">ศูนย์กลางแจ้งของหายและค้นหาสิ่งของที่พบ เพื่อให้ทุกสิ่งกลับคืนสู่เจ้าของ ค้นหาได้ในไม่กี่วินาที ลงประกาศได้ฟรี</p>
+          <p class="slogan">“Lost something? Let’s find it together.”</p>
+
+          <form class="hero-search" id="heroSearch" role="search">
+            <div class="input-icon">
+              <i data-lucide="search"></i>
+              <input class="input" id="heroQ" type="search" placeholder="ค้นหา เช่น กระเป๋าสีแดง, บัตรนักศึกษา" aria-label="ค้นหาสิ่งของ" autocomplete="off">
+            </div>
+            <select class="select" id="heroType" aria-label="ประเภทประกาศ">
+              <option value="all">ทั้งหมด</option>
+              <option value="lost">ของหาย</option>
+              <option value="found">ของที่พบ</option>
+            </select>
+            <button class="btn btn-primary" type="submit">ค้นหา</button>
+          </form>
+          <div class="quick-tags">
+            <span>ยอดนิยม:</span>
+            <a href="search.html?category=%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B9%80%E0%B8%9B%E0%B9%8B%E0%B8%B2">กระเป๋า</a>
+            <a href="search.html?category=%E0%B8%AD%E0%B8%B4%E0%B9%80%E0%B8%A5%E0%B9%87%E0%B8%81%E0%B8%97%E0%B8%A3%E0%B8%AD%E0%B8%99%E0%B8%B4%E0%B8%81%E0%B8%AA%E0%B9%8C">อิเล็กทรอนิกส์</a>
+            <a href="search.html?q=%E0%B8%9A%E0%B8%B1%E0%B8%95%E0%B8%A3">บัตร</a>
+            <a href="search.html?category=%E0%B8%81%E0%B8%B8%E0%B8%8D%E0%B9%81%E0%B8%88">กุญแจ</a>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="search.html"><i data-lucide="search"></i> ค้นหาสิ่งของ</a>
+            <a class="btn btn-outline btn-lg" href="report-lost.html"><i data-lucide="alert-circle"></i> แจ้งของหาย</a>
+          </div>
+        </div>
+        <div class="hero-visual" id="heroVisual" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="container" aria-label="สถิติระบบ">
+      <div class="stats-grid">
+        <div class="stat-tile">
+          <span class="stat-icon tone-danger"><i data-lucide="alert-circle"></i></span>
+          <div><div class="stat-num" id="statLost">0</div><div class="stat-label">ประกาศของหาย</div></div>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-icon tone-primary"><i data-lucide="package-check"></i></span>
+          <div><div class="stat-num" id="statFound">0</div><div class="stat-label">สิ่งของที่พบ</div></div>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-icon tone-success"><i data-lucide="badge-check"></i></span>
+          <div><div class="stat-num" id="statReturned">0</div><div class="stat-label">ส่งคืนเจ้าของแล้ว</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="latestTitle">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">ประกาศล่าสุด</span>
+            <h2 id="latestTitle">สิ่งของที่เพิ่งมีการแจ้ง</h2>
+            <p>ดูรายการล่าสุด</p>
+          </div>
+          <a class="btn btn-outline" href="search.html">ดูทั้งหมด <i data-lucide="arrow-right"></i></a>
+        </div>
+        <div class="items-grid" id="latestItems"></div>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="howTitle">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">วิธีใช้งาน</span>
+          <h2 id="howTitle">3 ขั้นตอนง่าย ๆ ให้ของกลับถึงเจ้าของ</h2>
+          <p>ไม่ต้องมีทักษะด้านเทคโนโลยี ใช้เวลาไม่ถึงสองนาทีในการลงประกาศ</p>
+        </div>
+        <div class="steps-grid">
+          <article class="step-card">
+            <span class="step-icon"><i data-lucide="file-text"></i></span>
+            <span class="step-num">1</span>
+            <h3>แจ้งข้อมูล</h3>
+            <p>แจ้งของหายหรือแจ้งพบสิ่งของ พร้อมรายละเอียด สถานที่ วันที่ และรูปภาพ (ถ้ามี)</p>
+          </article>
+          <article class="step-card">
+            <span class="step-icon"><i data-lucide="search"></i></span>
+            <span class="step-num">2</span>
+            <h3>ค้นหาและจับคู่</h3>
+            <p>ค้นหาด้วยชื่อ หมวดหมู่ สี และสถานที่ ระบบช่วยแสดงสิ่งของที่ใกล้เคียงกับที่คุณตามหา</p>
+          </article>
+          <article class="step-card">
+            <span class="step-icon"><i data-lucide="phone-call"></i></span>
+            <span class="step-num">3</span>
+            <h3>ติดต่อและรับของคืน</h3>
+            <p>เข้าสู่ระบบเพื่อติดต่อผู้โพสต์ได้โดยตรงผ่านโทรศัพท์หรือ LINE เพื่อนัดหมายส่งมอบสิ่งของได้ทันที</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="ctaTitle" style="padding-bottom:0">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2 id="ctaTitle">พบสิ่งของของใคร? หรือกำลังตามหาอะไรอยู่?</h2>
+            <p>ทุกประกาศช่วยให้สิ่งของกลับถึงเจ้าของเร็วขึ้น เริ่มแจ้งข้อมูลได้เลยวันนี้</p>
+          </div>
+          <div class="hero-actions" style="margin:0">
+            <a class="btn btn-light btn-lg" href="report-lost.html">แจ้งของหาย</a>
+            <a class="btn btn-line btn-lg" href="report-found.html">แจ้งพบของ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script defer src="assets/js/mock-data.js?v=20261019_detail"></script>
+  <script defer src="assets/js/app.js?v=20261019_detail"></script>
+  <script defer src="assets/js/search.js?v=20261019_detail"></script>
+</body>
+</html>

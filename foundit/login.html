@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>เข้าสู่ระบบ | FoundIt</title>
+  <meta name="description" content="เข้าสู่ระบบ FoundIt เพื่อแจ้งของหายและติดตามประกาศของคุณ">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <script defer src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+</head>
+<body data-layout="auth" data-page="login">
+  <div class="auth-page">
+    <aside class="auth-side" aria-hidden="false">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m21 21-5.2-5.2"/><path d="m8 10.6 1.9 1.9L13.3 9"/></svg></span>
+        <span>FoundIt</span>
+      </a>
+      <div>
+        <h2>Lost something? Let’s find it together.</h2>
+        <p>ศูนย์กลางแจ้งของหายและค้นหาสิ่งของที่พบ เพื่อให้ทุกสิ่งกลับคืนสู่เจ้าของ</p>
+        <ul class="auth-points">
+          <li><i data-lucide="check-circle-2"></i><span>ค้นหาของหายและของที่พบได้ในที่เดียว</span></li>
+          <li><i data-lucide="check-circle-2"></i><span>ติดตามสถานะประกาศของคุณได้ตลอดเวลา</span></li>
+          <li><i data-lucide="check-circle-2"></i><span>เข้าสู่ระบบเพื่อดูเบอร์โทรและ LINE ติดต่อผู้โพสต์โดยตรง</span></li>
+        </ul>
+      </div>
+      <small>© 2026 FoundIt</small>
+    </aside>
+
+    <main id="main" class="auth-main">
+      <div class="auth-card">
+        <a class="brand auth-mobile-brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m21 21-5.2-5.2"/><path d="m8 10.6 1.9 1.9L13.3 9"/></svg></span>
+          <span>FoundIt</span>
+        </a>
+        <h1>ยินดีต้อนรับกลับมา</h1>
+        <p class="sub">เข้าสู่ระบบเพื่อจัดการประกาศและติดต่อผู้โพสต์</p>
+
+
+        <form id="loginForm" novalidate>
+          <div class="notice notice-danger form-alert" role="alert" hidden style="margin-bottom:18px">
+            <i data-lucide="alert-circle"></i><div>กรุณาตรวจสอบข้อมูลที่กรอกและลองใหม่อีกครั้ง</div>
+          </div>
+          <div class="field">
+            <label for="email">อีเมล</label>
+            <div class="input-icon">
+              <i data-lucide="mail"></i>
+              <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="name@university.ac.th">
+            </div>
+          </div>
+          <div class="field">
+            <label for="password">รหัสผ่าน</label>
+            <div class="input-icon has-toggle">
+              <i data-lucide="lock"></i>
+              <input class="input" id="password" name="password" type="password" autocomplete="current-password" placeholder="อย่างน้อย 6 ตัวอักษร">
+              <button class="btn-icon toggle-pw" type="button" data-toggle-password="password" aria-label="แสดงรหัสผ่าน" aria-pressed="false"><i data-lucide="eye"></i></button>
+            </div>
+          </div>
+          <div class="form-row">
+            <label class="check"><input type="checkbox" id="remember"><span>จดจำฉัน</span></label>
+          </div>
+          <button class="btn btn-primary btn-lg btn-block" type="submit">เข้าสู่ระบบ</button>
+        </form>
+
+        <p class="auth-foot">ยังไม่มีบัญชี? <a href="register.html"><strong>สมัครสมาชิก</strong></a></p>
+        <p class="auth-foot" style="margin-top:8px"><a href="index.html"><i data-lucide="arrow-left" style="width:1em;height:1em;vertical-align:-2px"></i> กลับไปหน้าแรก</a></p>
+      </div>
+    </main>
+  </div>
+
+  <script defer src="assets/js/mock-data.js?v=20261019_clean"></script>
+  <script defer src="assets/js/app.js?v=20261019_clean"></script>
+  <script defer src="assets/js/forms.js"></script>
+</body>
+</html>

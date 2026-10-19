@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>รายงานสถิติ | FoundIt</title>
+  <meta name="description" content="รายงานสถิติประกาศของหายและสิ่งของที่พบ">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261019">
+  <link rel="stylesheet" href="assets/css/components.css?v=20261019">
+  <link rel="stylesheet" href="assets/css/responsive.css?v=20261019">
+  <style id="print-fix-styles">
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 10mm 14mm 10mm 14mm;
+      }
+      *, *::before, *::after,
+      body, h1, h2, h3, h4, th, td, p, span, div, small, strong, em {
+        font-family: 'Thonburi', 'Noto Sans Thai', -apple-system, BlinkMacSystemFont, 'Segoe UI', Tahoma, Arial, sans-serif !important;
+        text-shadow: none !important;
+        font-variant-ligatures: none !important;
+        letter-spacing: normal !important;
+        -webkit-font-smoothing: antialiased !important;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      body {
+        background: #fff !important;
+        font-size: 11px !important;
+        color: #0f172a !important;
+      }
+      .sidebar, .topbar, .sidebar-overlay, .navbar, .site-footer, .toast-root, .no-print, .skip-link,
+      .quick-actions, #printBtn, #exportAll, [data-export], .toolbar, #rReset {
+        display: none !important;
+      }
+      .app-shell { display: block !important; }
+      .app-main { display: block !important; }
+      .app-content { padding: 0 !important; max-width: 100% !important; margin: 0 !important; }
+
+      .page-head {
+        margin-bottom: 10px !important;
+        border-bottom: 2px solid #0f172a !important;
+        padding-bottom: 8px !important;
+      }
+      .page-head h1 {
+        font-size: 1.55rem !important;
+        color: #0f172a !important;
+        margin: 0 0 2px !important;
+      }
+      .page-head p {
+        font-size: .82rem !important;
+        color: #475569 !important;
+        margin: 0 !important;
+      }
+      .print-only {
+        display: block !important;
+        margin: 0 0 14px 0 !important;
+        font-size: .84rem !important;
+        color: #334155 !important;
+        font-weight: 500 !important;
+      }
+
+      .stat-cards {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 10px !important;
+        margin-bottom: 16px !important;
+        width: 100% !important;
+      }
+      .stat-card {
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+        background: #f8fafc !important;
+        padding: 8px 12px !important;
+        border-radius: 8px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+      }
+      .stat-card .stat-icon {
+        width: 32px !important;
+        height: 32px !important;
+        border-radius: 8px !important;
+      }
+      .stat-card .stat-icon svg {
+        width: 16px !important;
+        height: 16px !important;
+      }
+      .stat-card .stat-num {
+        font-size: 1.35rem !important;
+        line-height: 1.1 !important;
+        font-weight: 700 !important;
+      }
+      .stat-card .stat-label {
+        font-size: .74rem !important;
+        color: #475569 !important;
+      }
+
+      /* Report Blocks & Page Breaks */
+      .report-block {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        margin-bottom: 0 !important;
+      }
+      .report-block.report-1,
+      .report-block.report-2 {
+        page-break-after: always !important;
+        break-after: page !important;
+      }
+      .report-block.report-3 {
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+      }
+
+      /* 2-column grid inside cards */
+      .grid-2, .grid-2.even {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+        gap: 14px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+      }
+      .grid-2 > .card {
+        min-width: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+      }
+      .card-head {
+        padding: 9px 14px !important;
+        border-bottom: 1px solid #e2e8f0 !important;
+        background: #f8fafc !important;
+      }
+      .card-head h2, .card-head h3 {
+        font-size: .95rem !important;
+        margin: 0 !important;
+        font-weight: 600 !important;
+        color: #0f172a !important;
+      }
+      .card-head p {
+        font-size: .75rem !important;
+        margin: 2px 0 0 !important;
+        color: #64748b !important;
+      }
+      .card-body {
+        padding: 12px 14px !important;
+        min-width: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Charts in Print: show canvas, scale to fit column, prevent overflow */
+      .chart-box {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        height: 220px !important;
+        max-height: 220px !important;
+        overflow: hidden !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      .chart-box canvas,
+      canvas {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        max-height: 220px !important;
+        object-fit: contain !important;
+      }
+
+      /* Tables */
+      .table-wrap {
+        overflow: visible !important;
+        width: 100% !important;
+        border: none !important;
+      }
+      .table {
+        width: 100% !important;
+        font-size: 10px !important;
+        border-collapse: collapse !important;
+        table-layout: auto !important;
+      }
+      .table th, .table td {
+        padding: 5px 8px !important;
+        border-bottom: 1px solid #e2e8f0 !important;
+        line-height: 1.35 !important;
+      }
+      .table thead th {
+        background: #f1f5f9 !important;
+        color: #334155 !important;
+        font-weight: 600 !important;
+      }
+      .table tfoot td {
+        font-weight: 600 !important;
+        background: #f8fafc !important;
+        border-top: 2px solid #cbd5e1 !important;
+      }
+    }
+  </style>
+  <script defer src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+</head>
+<body data-layout="app" data-page="reports" data-title="รายงานสถิติ">
+  <div class="app-shell">
+    <div id="appSidebar"></div>
+    <div class="app-main">
+      <div id="appTopbar"></div>
+      <main id="main" class="app-content">
+        <div class="page-head">
+          <div>
+            <h1>รายงานสถิติ</h1>
+            <p>สรุปข้อมูลประกาศตามช่วงวันที่ พร้อมส่งออกและพิมพ์</p>
+          </div>
+          <div class="quick-actions no-print">
+            <button type="button" class="btn btn-outline" id="printBtn"><i data-lucide="printer"></i>พิมพ์รายงาน</button>
+            <button type="button" class="btn btn-primary" id="exportAll"><i data-lucide="download"></i>ส่งออก CSV ทั้งหมด</button>
+          </div>
+        </div>
+        <p class="print-only" id="printRange"></p>
+
+        <section class="card no-print" style="margin-bottom:20px" aria-label="ตัวกรองรายงาน">
+          <div class="toolbar" style="border-bottom:0">
+            <div class="field" style="margin:0"><label for="rFrom">ตั้งแต่วันที่</label><input class="input" type="date" id="rFrom"></div>
+            <div class="field" style="margin:0"><label for="rTo">ถึงวันที่</label><input class="input" type="date" id="rTo"></div>
+            <div class="field" style="margin:0"><label for="rType">ประเภทประกาศ</label>
+              <select class="select" id="rType"><option value="all">ทั้งหมด</option><option value="lost">ของหาย</option><option value="found">ของที่พบ</option></select></div>
+            <button type="button" class="btn btn-ghost" id="rReset" style="align-self:flex-end"><i data-lucide="rotate-ccw"></i>ล้างตัวกรอง</button>
+          </div>
+          <p class="field-error" id="rDateErr" role="alert" hidden style="padding:0 20px 16px"></p>
+        </section>
+
+        <section class="stat-cards" aria-label="สรุปตามช่วงวันที่">
+          <div class="stat-card"><span class="stat-icon tone-primary"><i data-lucide="layers"></i></span><div><div class="stat-num" id="rTotal">0</div><div class="stat-label">ประกาศทั้งหมด</div></div></div>
+          <div class="stat-card"><span class="stat-icon tone-danger"><i data-lucide="alert-circle"></i></span><div><div class="stat-num" id="rLost">0</div><div class="stat-label">ของหาย</div></div></div>
+          <div class="stat-card"><span class="stat-icon tone-primary"><i data-lucide="package-check"></i></span><div><div class="stat-num" id="rFound">0</div><div class="stat-label">ของที่พบ</div></div></div>
+          <div class="stat-card"><span class="stat-icon tone-success"><i data-lucide="badge-check"></i></span><div><div class="stat-num" id="rRate">0</div><div class="stat-label">อัตราส่งคืนสำเร็จ</div></div></div>
+        </section>
+
+        <section class="report-block report-1" aria-labelledby="h-r1" style="margin-bottom:20px">
+          <div class="grid-2 even">
+            <div class="card">
+              <div class="card-head"><div><h2 id="h-r1">รายงานที่ 1: จำนวนประกาศแยกตามเดือน</h2><p>ของหายและของที่พบในแต่ละเดือน</p></div></div>
+              <div class="card-body"><div class="chart-box"><canvas id="c1" role="img" aria-label="กราฟแท่งจำนวนประกาศแยกตามเดือน"></canvas></div></div>
+            </div>
+            <div class="card">
+              <div class="card-head"><div><h3>ตารางข้อมูล</h3></div><button type="button" class="btn btn-outline btn-sm no-print" data-export="monthly"><i data-lucide="download"></i>ส่งออก CSV</button></div>
+              <div class="card-body" style="padding-top:12px"><div class="table-wrap">
+                <table class="table"><caption class="sr-only">จำนวนประกาศแยกตามเดือน</caption>
+                  <thead><tr><th scope="col">เดือน</th><th scope="col" class="num">ของหาย</th><th scope="col" class="num">ของที่พบ</th><th scope="col" class="num">รวม</th></tr></thead>
+                  <tbody id="t1Body"></tbody><tfoot id="t1Foot"></tfoot></table>
+              </div></div>
+            </div>
+          </div>
+        </section>
+        <section class="report-block report-2" aria-labelledby="h-r2" style="margin-bottom:20px">
+          <div class="grid-2 even">
+            <div class="card">
+              <div class="card-head"><div><h2 id="h-r2">รายงานที่ 2: หมวดหมู่ที่สูญหายมากที่สุด</h2><p>สัดส่วนตามหมวดหมู่ของสิ่งของที่หาย</p></div></div>
+              <div class="card-body"><div class="chart-box"><canvas id="c2" role="img" aria-label="กราฟวงกลมหมวดหมู่ที่สูญหาย"></canvas></div></div>
+            </div>
+            <div class="card">
+              <div class="card-head"><div><h3>ตารางข้อมูล</h3></div><button type="button" class="btn btn-outline btn-sm no-print" data-export="category"><i data-lucide="download"></i>ส่งออก CSV</button></div>
+              <div class="card-body" style="padding-top:12px"><div class="table-wrap">
+                <table class="table"><caption class="sr-only">หมวดหมู่ที่สูญหายมากที่สุด</caption>
+                  <thead><tr><th scope="col">อันดับ</th><th scope="col">หมวดหมู่</th><th scope="col" class="num">จำนวน</th><th scope="col" class="num">สัดส่วน</th></tr></thead>
+                  <tbody id="t2Body"></tbody></table>
+              </div></div>
+            </div>
+          </div>
+        </section>
+        <section class="report-block report-3" aria-labelledby="h-r3" style="margin-bottom:20px">
+          <div class="grid-2 even">
+            <div class="card">
+              <div class="card-head"><div><h2 id="h-r3">รายงานที่ 3: สถานที่ที่มีการแจ้งบ่อยที่สุด</h2><p>8 อันดับแรกของสถานที่</p></div></div>
+              <div class="card-body"><div class="chart-box"><canvas id="c3" role="img" aria-label="กราฟแท่งสถานที่ที่มีการแจ้งบ่อยที่สุด"></canvas></div></div>
+            </div>
+            <div class="card">
+              <div class="card-head"><div><h3>ตารางข้อมูล</h3></div><button type="button" class="btn btn-outline btn-sm no-print" data-export="location"><i data-lucide="download"></i>ส่งออก CSV</button></div>
+              <div class="card-body" style="padding-top:12px"><div class="table-wrap">
+                <table class="table"><caption class="sr-only">สถานที่ที่มีการแจ้งบ่อยที่สุด</caption>
+                  <thead><tr><th scope="col">อันดับ</th><th scope="col">สถานที่</th><th scope="col" class="num">ของหาย</th><th scope="col" class="num">ของที่พบ</th><th scope="col" class="num">รวม</th></tr></thead>
+                  <tbody id="t3Body"></tbody></table>
+              </div></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="assets/js/mock-data.js?v=20261019_detail"></script>
+  <script defer src="assets/js/app.js?v=20261019_detail"></script>
+  <script defer src="assets/js/reports.js?v=20261019_detail"></script>
+</body>
+</html>

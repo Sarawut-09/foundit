@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>แจ้งของหาย | FoundIt</title>
+  <meta name="description" content="แจ้งสิ่งของสูญหายบน FoundIt เพื่อให้ผู้พบสิ่งของช่วยส่งคืน">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261019_notice">
+  <link rel="stylesheet" href="assets/css/components.css?v=20261019_notice">
+  <link rel="stylesheet" href="assets/css/responsive.css?v=20261019_notice">
+  <style>
+    .form-notice-wrap { padding: 24px 28px 8px; }
+    @media (max-width: 768px) {
+      .form-notice-wrap { padding: 20px 18px 6px; }
+    }
+  </style>
+  <script defer src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+</head>
+<body data-layout="public" data-page="report-lost">
+  <div id="siteHeader"></div>
+
+  <main id="main">
+    <div class="container">
+      <header class="page-hero">
+        <span class="eyebrow"><i data-lucide="alert-circle"></i> ของหาย</span>
+        <h1 style="font-size:clamp(1.75rem,3.2vw,2.4rem)">แจ้งสิ่งของสูญหาย</h1>
+        <p>กรอกข้อมูลสิ่งของที่คุณทำหาย ยิ่งละเอียดและชัดเจน ผู้พบสิ่งของจะยิ่งติดต่อกลับได้ง่ายขึ้น</p>
+      </header>
+
+      <div class="form-layout">
+        <div id="itemFormMount" data-mode="lost"></div>
+
+        <aside class="card tips-card" aria-label="คำแนะนำ">
+          <h3><i data-lucide="lightbulb"></i> เคล็ดลับการแจ้ง</h3>
+          <ul>
+            <li><i data-lucide="check-circle-2"></i><span>ระบุสี ยี่ห้อ ขนาด และจุดสังเกตเด่น เช่น พวงกุญแจหรือสติกเกอร์</span></li>
+            <li><i data-lucide="check-circle-2"></i><span>เลือกสถานที่ที่คาดว่าทำหายใกล้เคียงที่สุด</span></li>
+            <li><i data-lucide="check-circle-2"></i><span>แนบรูปถ่ายสิ่งของ (ถ้ามี) ช่วยให้จับคู่ได้เร็วขึ้น</span></li>
+          </ul>
+          <div class="divider"></div>
+          <ul>
+            <li class="no"><i data-lucide="x-circle"></i><span>ไม่ใส่เลขบัตรประชาชน เลขบัตรนักศึกษาเต็ม หรือเบอร์โทรในรายละเอียด</span></li>
+            <li class="no"><i data-lucide="x-circle"></i><span>ไม่ใส่รหัสผ่านหรือข้อมูลปลดล็อกอุปกรณ์</span></li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script defer src="assets/js/mock-data.js?v=20261019_detail"></script>
+  <script defer src="assets/js/app.js?v=20261019_detail"></script>
+  <script defer src="assets/js/forms.js?v=20261019_detail"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ค้นหาสิ่งของ | FoundIt</title>
+  <meta name="description" content="ค้นหาสิ่งของที่หายและสิ่งของที่พบภายในมหาวิทยาลัย กรองตามประเภท หมวดหมู่ สี สถานที่ และวันที่">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <script defer src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+</head>
+<body data-layout="public" data-page="search">
+  <div id="siteHeader"></div>
+
+  <main id="main">
+    <div class="container">
+      <header class="page-hero">
+        <span class="eyebrow"><i data-lucide="search"></i> ค้นหา</span>
+        <h1 style="font-size:clamp(1.75rem,3.2vw,2.4rem)">ค้นหาสิ่งของ</h1>
+        <p>ค้นหาสิ่งของที่คุณทำหาย หรือตรวจสอบว่ามีผู้พบสิ่งของนั้นแล้วหรือยัง ใช้ตัวกรองหลายตัวร่วมกันเพื่อให้ได้ผลลัพธ์ที่ตรงที่สุด</p>
+      </header>
+
+      <div class="search-layout">
+        <aside class="card filters" id="filters" aria-label="ตัวกรองการค้นหา">
+          <div class="filters-head">
+            <h2>ตัวกรอง</h2>
+            <button type="button" class="btn btn-outline btn-sm filter-toggle" id="filterToggle" aria-expanded="false" aria-controls="filterBody">
+              <i data-lucide="sliders-horizontal"></i> ตัวกรอง <span class="badge badge-primary" id="filterBadge" hidden style="padding:0 8px"></span>
+            </button>
+            <button type="button" class="link-btn" id="clearInline" hidden>ล้างทั้งหมด</button>
+          </div>
+
+          <div class="filters-body" id="filterBody">
+            <form id="filterForm" role="search" novalidate>
+              <div class="field">
+                <label for="q">คำค้นหา</label>
+                <div class="input-icon">
+                  <i data-lucide="search"></i>
+                  <input class="input" id="q" name="q" type="search" placeholder="ชื่อสิ่งของหรือรายละเอียด" autocomplete="off">
+                </div>
+              </div>
+
+              <fieldset class="field">
+                <legend>ประเภทประกาศ</legend>
+                <div class="segmented">
+                  <label><input type="radio" name="type" value="all" checked>ทั้งหมด</label>
+                  <label><input type="radio" name="type" value="lost">ของหาย</label>
+                  <label><input type="radio" name="type" value="found">ของที่พบ</label>
+                </div>
+              </fieldset>
+
+              <div class="field">
+                <label for="category">หมวดหมู่</label>
+                <select class="select" id="category" name="category"></select>
+              </div>
+
+              <fieldset class="field">
+                <legend>สี</legend>
+                <div class="chip-group" id="colorGroup"></div>
+              </fieldset>
+
+              <div class="field">
+                <label for="location">สถานที่</label>
+                <select class="select" id="location" name="location"></select>
+              </div>
+
+              <fieldset class="field">
+                <legend>วันที่</legend>
+                <div class="date-pair">
+                  <div><label class="hint" for="from">ตั้งแต่</label><input class="input" type="date" id="from" name="from"></div>
+                  <div><label class="hint" for="to">ถึง</label><input class="input" type="date" id="to" name="to"></div>
+                </div>
+                <p class="field-error" id="dateError" role="alert" hidden></p>
+              </fieldset>
+
+              <div class="filter-actions">
+                <button type="submit" class="btn btn-primary"><i data-lucide="search"></i> ค้นหา</button>
+                <button type="button" class="btn btn-outline" id="clearBtn"><i data-lucide="rotate-ccw"></i> ล้างตัวกรอง</button>
+              </div>
+            </form>
+          </div>
+        </aside>
+
+        <section aria-labelledby="resultsTitle">
+          <div id="resultsTop"></div>
+          <h2 class="sr-only" id="resultsTitle">ผลการค้นหา</h2>
+          <div class="results-bar">
+            <p class="results-count" id="resultCount" aria-live="polite">กำลังค้นหา…</p>
+            <div class="results-tools">
+              <label class="sr-only" for="sort">เรียงลำดับ</label>
+              <select class="select" id="sort" name="sort" form="filterForm">
+                <option value="new">ใหม่ล่าสุด</option>
+                <option value="old">เก่าที่สุด</option>
+              </select>
+              <div class="view-toggle" role="group" aria-label="รูปแบบการแสดงผล">
+                <button type="button" data-view="grid" aria-pressed="true" aria-label="มุมมองตาราง" title="มุมมองตาราง"><i data-lucide="layout-grid"></i></button>
+                <button type="button" data-view="list" aria-pressed="false" aria-label="มุมมองรายการ" title="มุมมองรายการ"><i data-lucide="list"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div id="results" class="items-grid"></div>
+          <div id="emptyState" hidden></div>
+          <nav class="pagination" id="pagination" aria-label="เลื่อนหน้าผลลัพธ์"></nav>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script defer src="assets/js/mock-data.js?v=20261019_detail"></script>
+  <script defer src="assets/js/app.js?v=20261019_detail"></script>
+  <script defer src="assets/js/search.js?v=20261019_detail"></script>
+</body>
+</html>

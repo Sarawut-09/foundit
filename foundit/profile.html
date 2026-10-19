@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ตั้งค่าบัญชี | FoundIt</title>
+  <meta name="description" content="จัดการข้อมูลบัญชีและการแจ้งเตือนของคุณ">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <script defer src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+</head>
+<body data-layout="app" data-page="profile" data-title="ตั้งค่าบัญชี">
+  <div class="app-shell">
+    <div id="appSidebar"></div>
+    <div class="app-main">
+      <div id="appTopbar"></div>
+      <main id="main" class="app-content">
+        <div class="page-head">
+          <div>
+            <h1>ตั้งค่าบัญชี</h1>
+            <p>จัดการข้อมูลส่วนตัวและการแจ้งเตือน</p>
+          </div>
+          <button type="button" class="btn btn-outline" data-logout><i data-lucide="log-out"></i>ออกจากระบบ</button>
+        </div>
+
+
+        <div class="stack" style="max-width:860px">
+          <section class="card" aria-labelledby="h-info">
+            <form id="profileForm" novalidate>
+              <div class="form-section">
+                <div class="profile-head" style="margin-bottom:24px">
+                  <span class="avatar avatar-lg" id="pfAvatar" aria-hidden="true">ส</span>
+                  <div><h2 id="pfTitle"></h2><p id="pfMail"></p></div>
+                </div>
+                <h2 class="form-section-title" id="h-info">ข้อมูลส่วนตัว</h2>
+                <p class="form-section-sub">กดปุ่มแก้ไขข้อมูลก่อนจึงจะเปลี่ยนค่าได้</p>
+                <div class="form-grid">
+                  <div class="field" style="grid-column:1/-1"><label for="pf-name">ชื่อ-นามสกุล <span class="req">*</span></label><input class="input" id="pf-name" autocomplete="name"></div>
+                  <div class="field"><label for="pf-email">อีเมล <span class="req">*</span></label><input class="input" id="pf-email" type="email" autocomplete="email"></div>
+                  <div class="field"><label for="pf-sid">รหัสนักศึกษา</label><input class="input" id="pf-sid" inputmode="numeric" maxlength="13" placeholder="เช่น 1167109050712" autocomplete="off"></div>
+                  <div class="field"><label for="pf-phone">เบอร์โทรศัพท์ (ค่าเริ่มต้นในประกาศ)</label><input class="input" id="pf-phone" type="tel" placeholder="เช่น 0812345678" autocomplete="tel"></div>
+                  <div class="field"><label for="pf-line">LINE ID (ค่าเริ่มต้นในประกาศ)</label><input class="input" id="pf-line" placeholder="เช่น @mylineid" autocomplete="off"></div>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="btn btn-outline" id="editProfile"><i data-lucide="pencil"></i>แก้ไขข้อมูล</button>
+                <button type="button" class="btn btn-ghost" id="cancelEdit" hidden>ยกเลิก</button>
+                <button type="submit" class="btn btn-primary" id="saveProfile" hidden>บันทึกการแก้ไข</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="card" aria-labelledby="h-notif">
+            <form id="notifForm">
+              <div class="form-section">
+                <h2 class="form-section-title" id="h-notif">การแจ้งเตือน</h2>
+                <p class="form-section-sub">เลือกเรื่องที่ต้องการให้แจ้งเตือน</p>
+                <label class="switch"><span><strong>มีสิ่งของที่ตรงกับประกาศของฉัน</strong><small>แจ้งเมื่อมีผู้พบสิ่งของที่คล้ายกับของที่หาย</small></span><input type="checkbox" name="match"></label>
+                <label class="switch"><span><strong>สถานะประกาศเปลี่ยน</strong><small>แจ้งเมื่อประกาศถูกเปลี่ยนเป็นพบสิ่งของหรือส่งคืนแล้ว</small></span><input type="checkbox" name="status"></label>
+              </div>
+              <div class="form-actions"><button type="submit" class="btn btn-primary">บันทึกการตั้งค่า</button></div>
+            </form>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script defer src="assets/js/mock-data.js?v=20261019_detail"></script>
+  <script defer src="assets/js/app.js?v=20261019_detail"></script>
+  <script defer src="assets/js/forms.js?v=20261019_detail"></script>
+</body>
+</html>

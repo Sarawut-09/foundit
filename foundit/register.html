@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>สมัครสมาชิก | FoundIt</title>
+  <meta name="description" content="สมัครสมาชิก FoundIt เพื่อแจ้งของหายและแจ้งพบสิ่งของในมหาวิทยาลัย">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <script defer src="https://unpkg.com/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+</head>
+<body data-layout="auth" data-page="register">
+  <div class="auth-page">
+    <aside class="auth-side">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m21 21-5.2-5.2"/><path d="m8 10.6 1.9 1.9L13.3 9"/></svg></span>
+        <span>FoundIt</span>
+      </a>
+      <div>
+        <h2>เริ่มต้นช่วยให้ของกลับถึงเจ้าของ</h2>
+        <p>สมัครสมาชิกเพื่อแจ้งของหาย แจ้งพบสิ่งของ และติดตามสถานะประกาศได้ง่าย ๆ</p>
+        <ul class="auth-points">
+          <li><i data-lucide="check-circle-2"></i><span>ใช้งานฟรีสำหรับนักศึกษา อาจารย์ และบุคลากร</span></li>
+          <li><i data-lucide="check-circle-2"></i><span>ลงประกาศได้ภายในไม่กี่นาที พร้อมแนบรูปภาพ</span></li>
+          <li><i data-lucide="check-circle-2"></i><span>การติดต่อทำผ่านระบบกลาง ปลอดภัยต่อข้อมูลส่วนตัว</span></li>
+        </ul>
+      </div>
+      <small>© 2026 FoundIt</small>
+    </aside>
+
+    <main id="main" class="auth-main">
+      <div class="auth-card">
+        <a class="brand auth-mobile-brand" href="index.html">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m21 21-5.2-5.2"/><path d="m8 10.6 1.9 1.9L13.3 9"/></svg></span>
+          <span>FoundIt</span>
+        </a>
+        <h1>สร้างบัญชีใหม่</h1>
+        <p class="sub">กรอกข้อมูลเพื่อเริ่มใช้งาน FoundIt</p>
+
+
+        <form id="registerForm" novalidate>
+          <div class="notice notice-danger form-alert" role="alert" hidden style="margin-bottom:18px">
+            <i data-lucide="alert-circle"></i><div>ข้อมูลยังไม่ครบถ้วนหรือไม่ถูกต้อง กรุณาตรวจสอบช่องที่มีข้อความสีแดง</div>
+          </div>
+          <div class="field">
+            <label for="fullname">ชื่อ-นามสกุล <span class="req">*</span></label>
+            <div class="input-icon"><i data-lucide="user"></i><input class="input" id="fullname" name="fullname" autocomplete="name" placeholder="เช่น สมหญิง ใจดี"></div>
+          </div>
+          <div class="field">
+            <label for="email">อีเมล <span class="req">*</span></label>
+            <div class="input-icon"><i data-lucide="mail"></i><input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="name@university.ac.th"></div>
+          </div>
+          <div class="field">
+            <label for="studentId">รหัสนักศึกษา <span class="text-muted" style="font-weight:400">(ไม่บังคับ)</span></label>
+            <div class="input-icon"><i data-lucide="badge-check"></i><input class="input" id="studentId" name="studentId" inputmode="numeric" maxlength="13" autocomplete="off" placeholder="เช่น 1167109050712"></div>
+          </div>
+          <div class="field">
+            <label for="password">รหัสผ่าน <span class="req">*</span></label>
+            <div class="input-icon has-toggle">
+              <i data-lucide="lock"></i>
+              <input class="input" id="password" name="password" type="password" autocomplete="new-password" placeholder="อย่างน้อย 8 ตัวอักษร">
+              <button class="btn-icon toggle-pw" type="button" data-toggle-password="password" aria-label="แสดงรหัสผ่าน" aria-pressed="false"><i data-lucide="eye"></i></button>
+            </div>
+            <div class="strength" id="strength" data-level="0" aria-live="polite"><i></i><i></i><i></i><i></i><span id="strengthLabel"></span></div>
+            <p class="hint">ผสมตัวพิมพ์เล็ก-ใหญ่ ตัวเลข และสัญลักษณ์เพื่อความปลอดภัย</p>
+          </div>
+          <div class="field">
+            <label for="confirm">ยืนยันรหัสผ่าน <span class="req">*</span></label>
+            <div class="input-icon has-toggle">
+              <i data-lucide="lock"></i>
+              <input class="input" id="confirm" name="confirm" type="password" autocomplete="new-password" placeholder="กรอกรหัสผ่านอีกครั้ง">
+              <button class="btn-icon toggle-pw" type="button" data-toggle-password="confirm" aria-label="แสดงรหัสผ่าน" aria-pressed="false"><i data-lucide="eye"></i></button>
+            </div>
+          </div>
+          <div class="field">
+            <label class="check" for="terms"><input type="checkbox" id="terms" name="terms"><span>ฉันยอมรับ <button type="button" class="link-btn" data-info="terms">เงื่อนไขการใช้งาน</button> และ <button type="button" class="link-btn" data-info="privacy">นโยบายความเป็นส่วนตัว</button></span></label>
+          </div>
+          <button class="btn btn-primary btn-lg btn-block" type="submit">สมัครสมาชิก</button>
+        </form>
+
+        <p class="auth-foot">มีบัญชีอยู่แล้ว? <a href="login.html"><strong>เข้าสู่ระบบ</strong></a></p>
+        <p class="auth-foot" style="margin-top:8px"><a href="index.html"><i data-lucide="arrow-left" style="width:1em;height:1em;vertical-align:-2px"></i> กลับไปหน้าแรก</a></p>
+      </div>
+    </main>
+  </div>
+
+  <script defer src="assets/js/mock-data.js?v=20261019_detail"></script>
+  <script defer src="assets/js/app.js?v=20261019_detail"></script>
+  <script defer src="assets/js/forms.js?v=20261019_detail"></script>
+</body>
+</html>
